@@ -9,7 +9,7 @@ export class ProductserviceService {
 
   constructor(private http: HttpClient) { }
   getProducts() {
-    return this.http.get(`${environment.apiUrl}products`)
+    return this.http.get(`${environment.apiUrl}products?limit=100`)
   }
   getFeaturedProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=8`)

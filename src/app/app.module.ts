@@ -21,8 +21,9 @@ import { ProductsShopComponent } from './components/secondary-layouts/products-s
 import { BackToTopComponent } from './components/secondary-layouts/back-to-top/back-to-top.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecentProductsComponent } from './components/secondary-layouts/recent-products/recent-products.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,9 @@ import { RecentProductsComponent } from './components/secondary-layouts/recent-p
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

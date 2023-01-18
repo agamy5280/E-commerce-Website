@@ -18,8 +18,6 @@ export class ProductStarsComponent implements OnInit {
     this.productRating = data.rating;
     this.productRatingFloor = Math.floor(this.productRating);
     this.productRatingRemaning = 5 -  Math.floor(this.productRating);
-    this.productRatingEmptyStart = 5 - Math.ceil(this.productRating);
-    console.log(this.productRatingRemaning)
-  })
+    this.productRatingEmptyStart = 5 - Math.ceil(this.productRating);  })
   }
 }
