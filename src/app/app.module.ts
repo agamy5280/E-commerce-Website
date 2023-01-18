@@ -14,11 +14,13 @@ import { SearchbarComponent } from './components/secondary-layouts/searchbar/sea
 import { ProductStarsComponent } from './components/secondary-layouts/product-stars/product-stars.component';
 import { FooterComponent } from './components/secondary-layouts/footer/footer.component';
 import { CategoriesHomepageComponent } from './components/secondary-layouts/categories-homepage/categories-homepage.component';
-import { FeaturedRecentProductsComponent } from './components/secondary-layouts/featured-recent-products/featured-recent-products.component';
+import { FeaturedProductsComponent } from './components/secondary-layouts/featured-products/featured-products.component';
 import { NavBarComponent } from './components/secondary-layouts/nav-bar/nav-bar.component';
 import { BreadcrumbComponent } from './components/secondary-layouts/breadcrumb/breadcrumb.component';
 import { ProductsShopComponent } from './components/secondary-layouts/products-shop/products-shop.component';
 import { BackToTopComponent } from './components/secondary-layouts/back-to-top/back-to-top.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RecentProductsComponent } from './components/secondary-layouts/recent-products/recent-products.component';
 
 
 @NgModule({
@@ -35,15 +37,17 @@ import { BackToTopComponent } from './components/secondary-layouts/back-to-top/b
     ProductStarsComponent,
     FooterComponent,
     CategoriesHomepageComponent,
-    FeaturedRecentProductsComponent,
+    FeaturedProductsComponent,
     NavBarComponent,
     BreadcrumbComponent,
     ProductsShopComponent,
-    BackToTopComponent
+    BackToTopComponent,
+    RecentProductsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

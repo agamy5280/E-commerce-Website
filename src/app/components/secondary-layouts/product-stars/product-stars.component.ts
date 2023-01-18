@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductserviceService } from 'src/app/services/product/productservice.service';
 
 @Component({
   selector: 'app-product-stars',
   templateUrl: './product-stars.component.html',
   styleUrls: ['./product-stars.component.scss']
 })
-export class ProductStarsComponent {
-
+export class ProductStarsComponent implements OnInit {
+  @Input() id: number = 0 ;
+  productRating: number = 0 ;
+  productRatingFloor: number = 0 ;
+  productRatingRemaning: number = 0 ;
+  productRatingEmptyStart: number = 0;
+  constructor(private prodService: ProductserviceService){}
+  ngOnInit(): void {
+   this.prodService.getProductStars(this.id).subscribe((data:any)=>{
+    this.productRating = data.rating;
+    this.productRatingFloor = Math.floor(this.productRating);
+    this.productRatingRemaning = 5 -  Math.floor(this.productRating);
+    this.productRatingEmptyStart = 5 - Math.ceil(this.productRating);
+    console.log(this.productRatingRemaning)
+  })
+  }
 }
