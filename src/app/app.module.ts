@@ -3,12 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './layouts/homepage/homepage.component';
-import { ShopComponent } from './layouts/shop/shop.component';
-import { ProductDetailComponent } from './layouts/product-detail/product-detail.component';
-import { ContactComponent } from './layouts/contact/contact.component';
-import { CheckoutComponent } from './layouts/checkout/checkout.component';
-import { CartComponent } from './layouts/cart/cart.component';
+import { CartComponent } from './components/layouts/cart/cart.component';
+import { CheckoutComponent } from './components/layouts/checkout/checkout.component';
+import { ContactComponent } from './components/layouts/contact/contact.component';
+import { HomepageComponent } from './components/layouts/homepage/homepage.component';
+import { ProductDetailComponent } from './components/layouts/product-detail/product-detail.component';
+import { ShopComponent } from './components/layouts/shop/shop.component';
+import { HeaderComponent } from './components/secondary-layouts/header/header.component';
+import { SearchbarComponent } from './components/secondary-layouts/searchbar/searchbar.component';
+import { ProductStarsComponent } from './components/secondary-layouts/product-stars/product-stars.component';
+import { FooterComponent } from './components/secondary-layouts/footer/footer.component';
+import { CategoriesHomepageComponent } from './components/secondary-layouts/categories-homepage/categories-homepage.component';
+import { FeaturedRecentProductsComponent } from './components/secondary-layouts/featured-recent-products/featured-recent-products.component';
+import { NavBarComponent } from './components/secondary-layouts/nav-bar/nav-bar.component';
+import { BreadcrumbComponent } from './components/secondary-layouts/breadcrumb/breadcrumb.component';
+import { ProductsShopComponent } from './components/secondary-layouts/products-shop/products-shop.component';
+import { BackToTopComponent } from './components/secondary-layouts/back-to-top/back-to-top.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +29,17 @@ import { CartComponent } from './layouts/cart/cart.component';
     ProductDetailComponent,
     ContactComponent,
     CheckoutComponent,
-    CartComponent
+    CartComponent,
+    HeaderComponent,
+    SearchbarComponent,
+    ProductStarsComponent,
+    FooterComponent,
+    CategoriesHomepageComponent,
+    FeaturedRecentProductsComponent,
+    NavBarComponent,
+    BreadcrumbComponent,
+    ProductsShopComponent,
+    BackToTopComponent
   ],
   imports: [
     BrowserModule,
