@@ -23,4 +23,7 @@ export class ProductserviceService {
   getProductByCategory(category:string){
     return this.http.get(`${environment.apiUrl}products/category/`+ category)
   }
+  getProductBySearch(searchedKeywoard:string){
+    return this.http.get(`${environment.apiUrl}products/search?q=`+ searchedKeywoard)
+  }
 }

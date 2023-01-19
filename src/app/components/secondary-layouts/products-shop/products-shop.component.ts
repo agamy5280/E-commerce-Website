@@ -9,6 +9,7 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 export class ProductsShopComponent implements OnInit {
   products: [] = [];
   categoryName: string = '';
+  searchedProduct: string = '';
   productsQuantity: number;
   page: number;
   constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute){
@@ -16,15 +17,22 @@ export class ProductsShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.categoryName = params['category'];
-      if(!this.categoryName){
-        this.prodService.getProducts().subscribe((data:any)=>{
+      if(params['search']){
+        this.searchedProduct = params['search'];
+        this.prodService.getProductBySearch(this.searchedProduct).subscribe((data:any)=>{
           this.products = data.products;
           this.productsQuantity = data.total;
           this.page = 0;
         })
-      }else if(this.categoryName){
+      }else if(params['category']){
+        this.categoryName = params['category'];
         this.prodService.getProductByCategory(this.categoryName).subscribe((data:any) => {
+          this.products = data.products;
+          this.productsQuantity = data.total;
+          this.page = 0;
+        })
+      }else {
+        this.prodService.getProducts().subscribe((data:any)=>{
           this.products = data.products;
           this.productsQuantity = data.total;
           this.page = 0;

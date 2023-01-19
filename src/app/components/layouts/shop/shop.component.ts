@@ -12,7 +12,8 @@ export class ShopComponent implements OnInit {
   categories = [];
   selectedCategory: string;
   selectedCategoriesIndex: number;
-  isChecked: boolean = true;
+  isCheckedAllCategories: boolean = true;
+  isCheckedCustomSearch: boolean = false;
   constructor(private catService:CategoryserviceService, private _router: Router, private route: ActivatedRoute,){
   }
   ngOnInit(): void {
@@ -20,12 +21,19 @@ export class ShopComponent implements OnInit {
       this.catService.getCategoryies().subscribe((data:any) => {
         this.categories = data;
       })
+      this.route.queryParams.subscribe(params => {
+        if(params['search']){
+          this.selectedCategoriesIndex = -1;
+          this.isCheckedCustomSearch = true;
+          this.isCheckedAllCategories = false;
+        }
+      })
   }
   changeSelectionCategories(event, index){
     // If checkboxes are not seleceted
     this.selectedCategoriesIndex = event.target.checked ? index : undefined;
     if(event.target.checked == false){
-      this.isChecked = true;
+      this.isCheckedAllCategories = true;
       this.selectedCategory = '';
       this._router.navigate([], {
         relativeTo: this.route,
@@ -33,7 +41,7 @@ export class ShopComponent implements OnInit {
     }else{
       // If checkboxes are seleceted
       this.selectedCategory = event.target.value;
-      this.isChecked = false;
+      this.isCheckedAllCategories = false;
      this._router.navigate([], {
       relativeTo: this.route,
       queryParams: {
