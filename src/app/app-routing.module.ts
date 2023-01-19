@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/layouts/cart/cart.component';
@@ -11,7 +12,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch:'full' },
   { path:'home', component:HomepageComponent },
   { path:'shop', component:ShopComponent },
-  { path:'shop-detail', component:ProductDetailComponent },
+  { path:'shop-detail', component:ProductDetailComponent, children:[{
+    path:':id', component:ProductDetailComponent
+  }] },
+  // { path:'shop-detail/:id', component:ProductDetailComponent },
   { path:'contact', component:ContactComponent },
   { path:'checkout', component:CheckoutComponent },
   { path:'cart', component:CartComponent },

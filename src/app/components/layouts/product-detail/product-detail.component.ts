@@ -1,11 +1,26 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductserviceService } from 'src/app/services/product/productservice.service';
 declare var $: any;
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements AfterViewInit {
+export class ProductDetailComponent implements AfterViewInit, OnInit {
+  productID: number;
+  productData = [];
+  productCategory: string;
+  constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService){
+    // checking if path shop-detail is active
+    if(_router.url == '/shop-detail'){
+      this._router.navigate(['shop']);
+    }
+    //getting product ID from current queryParms
+    route.queryParams.subscribe(params => {
+      this.productID = params['product'];
+    })
+  }
   ngAfterViewInit(): void {
     // Related carousel
     setTimeout(()=>{
@@ -31,5 +46,14 @@ export class ProductDetailComponent implements AfterViewInit {
         },
       });
     },1000)
+  }
+  ngOnInit() {
+    //getting product data
+    this.prodService.getProductByID(this.productID).subscribe((data:any) => {
+      this.productData = data;
+      this.productCategory = data.category;
+      console.log(this.productData);
+      console.log(this.productCategory)
+    })
   }
 }

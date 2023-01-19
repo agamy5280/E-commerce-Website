@@ -17,7 +17,7 @@ export class ProductserviceService {
   getRecentProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=8&skip=8`)
   }
-  getProductStars(id:number){
+  getProductByID(id:number){
     return this.http.get(`${environment.apiUrl}products/`+ id)
   }
 }
