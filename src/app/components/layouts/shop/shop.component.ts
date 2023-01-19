@@ -26,6 +26,9 @@ export class ShopComponent implements OnInit {
           this.selectedCategoriesIndex = -1;
           this.isCheckedCustomSearch = true;
           this.isCheckedAllCategories = false;
+        }else{
+          this.isCheckedCustomSearch = false;
+          this.isCheckedAllCategories = true;
         }
       })
   }
