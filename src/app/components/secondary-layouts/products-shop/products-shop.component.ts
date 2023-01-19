@@ -21,11 +21,13 @@ export class ProductsShopComponent implements OnInit {
         this.prodService.getProducts().subscribe((data:any)=>{
           this.products = data.products;
           this.productsQuantity = data.total;
+          this.page = 0;
         })
       }else if(this.categoryName){
         this.prodService.getProductByCategory(this.categoryName).subscribe((data:any) => {
           this.products = data.products;
           this.productsQuantity = data.total;
+          this.page = 0;
         })
       }
     })
