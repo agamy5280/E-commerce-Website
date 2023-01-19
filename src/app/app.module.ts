@@ -24,6 +24,8 @@ import { RecentProductsComponent } from './components/secondary-layouts/recent-p
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PageNotFoundComponent } from './components/secondary-layouts/page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     BreadcrumbComponent,
     ProductsShopComponent,
     BackToTopComponent,
-    RecentProductsComponent
+    RecentProductsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

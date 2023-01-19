@@ -52,8 +52,6 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
     this.prodService.getProductByID(this.productID).subscribe((data:any) => {
       this.productData = data;
       this.productCategory = data.category;
-      console.log(this.productData);
-      console.log(this.productCategory)
     })
   }
 }
