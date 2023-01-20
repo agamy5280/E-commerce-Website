@@ -17,7 +17,10 @@ export class ProductsShopComponent implements OnInit {
   maxPrice: number;
   @Output() productsQuantityPrices = new EventEmitter<number>();
   sortingOptions: string[] = [
-    'Stock',
+    'Stock: Low to High',
+    'Stock: High to Low',
+    'Price: Low to High',
+    'Price: High to Low',
     'Best Rating',
     'Clear'
   ]
@@ -56,7 +59,7 @@ export class ProductsShopComponent implements OnInit {
           // this.productsQuantityPrices.emit(this.products.length);
         })
       }else if(params['sortBy']){
-        if(params['sortBy'] == 'Stock'){
+        if(params['sortBy'] == 'Stock: High to Low'){
           this.products = [];
           (await this.prodService.getProducts()).subscribe((data:any) => {
             this.products = data.products;
@@ -64,7 +67,35 @@ export class ProductsShopComponent implements OnInit {
             this.productsQuantity = this.products.length;
             this.page = 0;
           })
-        }else if(params['sortBy'] == 'Best Rating'){
+        }
+        else if(params['sortBy'] == 'Stock: Low to High'){
+          this.products = [];
+          (await this.prodService.getProducts()).subscribe((data:any) => {
+            this.products = data.products;
+            this.products = orderBy(this.products, ['stock'], ['asc']);
+            this.productsQuantity = this.products.length;
+            this.page = 0;
+          })
+        }
+        else if(params['sortBy'] == 'Price: Low to High'){
+          this.products = [];
+          (await this.prodService.getProducts()).subscribe((data:any) => {
+            this.products = data.products;
+            this.products = orderBy(this.products, ['price'], ['asc']);
+            this.productsQuantity = this.products.length;
+            this.page = 0;
+          })
+        }
+        else if(params['sortBy'] == 'Price: High to Low'){
+          this.products = [];
+          (await this.prodService.getProducts()).subscribe((data:any) => {
+            this.products = data.products;
+            this.products = orderBy(this.products, ['price'], ['desc']);
+            this.productsQuantity = this.products.length;
+            this.page = 0;
+          })
+        }
+        else if(params['sortBy'] == 'Best Rating'){
           this.products = [];
           (await this.prodService.getProducts()).subscribe((data:any) => {
             this.products = data.products;
