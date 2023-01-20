@@ -23,10 +23,14 @@ export class ShopComponent implements OnInit {
       })
       this.route.queryParams.subscribe(params => {
         if(params['search']){
-          this.selectedCategoriesIndex = -1;
           this.isCheckedCustomSearch = true;
+          this.selectedCategoriesIndex = -1;
           this.isCheckedAllCategories = false;
-        }else{
+        }else if(params['category']){
+          this.isCheckedCustomSearch = false;
+          this.isCheckedAllCategories = false;
+        }
+        else{
           this.isCheckedCustomSearch = false;
           this.isCheckedAllCategories = true;
         }
