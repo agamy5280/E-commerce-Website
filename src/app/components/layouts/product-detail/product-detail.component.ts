@@ -47,9 +47,9 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
       });
     },1000)
   }
-  ngOnInit() {
+  async ngOnInit() {
     //getting product data
-    this.prodService.getProductByID(this.productID).subscribe((data:any) => {
+    (await this.prodService.getProductByID(this.productID)).subscribe((data:any) => {
       this.productData = data;
       this.productCategory = data.category;
     })

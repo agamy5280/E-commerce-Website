@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
+import {orderBy} from 'lodash';
 @Component({
   selector: 'app-products-shop',
   templateUrl: './products-shop.component.html',
@@ -12,27 +13,71 @@ export class ProductsShopComponent implements OnInit {
   searchedProduct: string = '';
   productsQuantity: number;
   page: number;
+  minPrice: number;
+  maxPrice: number;
+  @Output() productsQuantityPrices = new EventEmitter<number>();
+  sortingOptions: string[] = [
+    'Stock',
+    'Best Rating',
+    'Clear'
+  ]
   constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute){
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(async params => {
       if(params['search']){
         this.searchedProduct = params['search'];
-        this.prodService.getProductBySearch(this.searchedProduct).subscribe((data:any)=>{
+        (await this.prodService.getProductBySearch(this.searchedProduct)).subscribe((data:any)=>{
           this.products = data.products;
           this.productsQuantity = data.total;
           this.page = 0;
         })
       }else if(params['category']){
         this.categoryName = params['category'];
-        this.prodService.getProductByCategory(this.categoryName).subscribe((data:any) => {
+        (await this.prodService.getProductByCategory(this.categoryName)).subscribe((data:any) => {
           this.products = data.products;
           this.productsQuantity = data.total;
           this.page = 0;
         })
-      }else {
-        this.prodService.getProducts().subscribe((data:any)=>{
+      }else if(params['minPrice'] && params['maxPrice'] ){
+        this.products = [];
+        this.minPrice = params['minPrice'];
+        this.maxPrice = params['maxPrice'];
+        (await this.prodService.getProducts()).subscribe((data:any) => {
+          for(let index = 0; index < 100; index++ ){
+            if(data.products[index].price >= this.minPrice && data.products[index].price <= this.maxPrice){
+              this.products.push(data.products[index] as never);
+              // this.productsQuantityPrices.emit(this.products.length);
+            }
+          }
+          this.page = 0;
+          this.productsQuantity = this.products.length;
+          // this.productsQuantityPrices.emit(this.products.length);
+        })
+      }else if(params['sortBy']){
+        if(params['sortBy'] == 'Stock'){
+          this.products = [];
+          (await this.prodService.getProducts()).subscribe((data:any) => {
+            this.products = data.products;
+            this.products = orderBy(this.products, ['stock'], ['desc']);
+            this.productsQuantity = this.products.length;
+            this.page = 0;
+          })
+        }else if(params['sortBy'] == 'Best Rating'){
+          this.products = [];
+          (await this.prodService.getProducts()).subscribe((data:any) => {
+            this.products = data.products;
+            this.products = orderBy(this.products, ['rating'], ['desc']);
+            this.productsQuantity = this.products.length;
+            this.page = 0;
+          })
+        }else{
+          this._router.navigate(['shop'])
+        }
+      }
+      else {
+         (await this.prodService.getProducts()).subscribe((data:any)=>{
           this.products = data.products;
           this.productsQuantity = data.total;
           this.page = 0;
@@ -47,4 +92,11 @@ export class ProductsShopComponent implements OnInit {
       },
     });
   }
+  showProductsBySorting(sortingOption){
+    this._router.navigate([],{
+      queryParams:{
+        sortBy: sortingOption
+      }
+    })
+  } 
 }

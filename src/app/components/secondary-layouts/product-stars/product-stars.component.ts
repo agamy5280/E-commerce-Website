@@ -13,8 +13,8 @@ export class ProductStarsComponent implements OnInit {
   productRatingRemaning: number = 0 ;
   productRatingEmptyStart: number = 0;
   constructor(private prodService: ProductserviceService){}
-  ngOnInit(): void {
-   this.prodService.getProductByID(this.id).subscribe((data:any)=>{
+  async ngOnInit(): Promise<void> {
+    (await this.prodService.getProductByID(this.id)).subscribe((data:any)=>{
     this.productRating = data.rating;
     this.productRatingFloor = Math.floor(this.productRating);
     this.productRatingRemaning = 5 -  Math.floor(this.productRating);

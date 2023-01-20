@@ -8,22 +8,22 @@ import { environment } from 'src/environments/environments';
 export class ProductserviceService {
 
   constructor(private http: HttpClient) { }
-  getProducts() {
+  async getProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=100`)
   }
-  getFeaturedProducts() {
+  async getFeaturedProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=8`)
   }
-  getRecentProducts() {
+  async getRecentProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=8&skip=8`)
   }
-  getProductByID(id:number){
+  async getProductByID(id:number){
     return this.http.get(`${environment.apiUrl}products/`+ id)
   }
-  getProductByCategory(category:string){
+  async getProductByCategory(category:string){
     return this.http.get(`${environment.apiUrl}products/category/`+ category)
   }
-  getProductBySearch(searchedKeywoard:string){
+  async getProductBySearch(searchedKeywoard:string){
     return this.http.get(`${environment.apiUrl}products/search?q=`+ searchedKeywoard)
   }
 }

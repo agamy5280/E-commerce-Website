@@ -28,3 +28,18 @@
     content: '<';
     font-size: 24px;
 }
+#Stock, #Clear{
+    cursor: pointer;
+}
+a[id='Best Rating']{
+    cursor: pointer;
+}
+a[id='Best Rating']:hover{
+    background-color: #03C988;
+}
+#Stock:hover{
+    background-color: #03C988;
+}
+#Clear:hover{
+    background-color: #F55050;
+}

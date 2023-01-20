@@ -10,8 +10,8 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
   constructor(private prodService:ProductserviceService, private route: ActivatedRoute, private _router: Router){}
-  ngOnInit(): void {
-    this.prodService.getFeaturedProducts().subscribe((data:any)=>{
+  async ngOnInit(): Promise<void> {
+    (await this.prodService.getFeaturedProducts()).subscribe((data:any)=>{
       this.featuredProducts = data.products;
     })
   }
