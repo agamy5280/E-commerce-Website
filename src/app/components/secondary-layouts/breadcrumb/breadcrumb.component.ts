@@ -7,8 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./breadcrumb.component.scss']
 })
 export class BreadcrumbComponent implements OnInit{
+  currentRoute: string = '';
+  currentKey: string= '';
+  currentParams: any;
 constructor(private _router: Router, private route: ActivatedRoute){}
-ngOnInit(): void {
-    
-}
+  ngOnInit(): void {
+    this.currentRoute = this._router.url.split('?')[0];
+    this.currentRoute = this.currentRoute.replace('/','')
+    this.route.queryParamMap.subscribe(params =>{
+      this.currentKey = params.keys[0]
+      this.currentParams = params['params'][this.currentKey]
+      console.log(this.currentParams)
+    })
+  }
 }

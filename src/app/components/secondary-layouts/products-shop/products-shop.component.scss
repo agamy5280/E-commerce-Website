@@ -30,9 +30,11 @@
 }
 a[id='Best Rating']:hover, a[id='Stock: Low to High']:hover, a[id='Stock: High to Low']:hover, a[id='Price: Low to High']:hover, a[id='Price: High to Low']:hover{
     background-color: #03C988;
+    color: #FFF;
     cursor: pointer;
 }
 #Clear:hover{
     cursor: pointer;
+    color: #FFF;
     background-color: #F55050;
 }
