@@ -6,13 +6,15 @@
         #search-bar {
             height: 32px;
             width: 320px;
-            border: 0.21px solid #424242;
             border-radius: 8px;
             text-indent: 18px;
             ::placeholder {
                 color: #667085;
                 font-size: 14px;
               }
+          }
+          #search-bar:hover{
+            box-shadow: 5px 5px #FFD333;
           }
         i{
             color: #FFD333;
