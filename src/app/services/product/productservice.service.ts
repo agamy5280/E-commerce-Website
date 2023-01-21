@@ -26,4 +26,7 @@ export class ProductserviceService {
   async getProductBySearch(searchedKeywoard:string){
     return this.http.get(`${environment.apiUrl}products/search?q=`+ searchedKeywoard)
   }
+  async getUserReviews() {
+    return this.http.get(`${environment.apiUrl}users?limit=5`)
+  }
 }

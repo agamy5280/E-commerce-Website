@@ -9,9 +9,11 @@ declare var $: any;
 })
 export class ProductDetailComponent implements AfterViewInit, OnInit {
   productID: number;
-  targetProductData = [] = [];
+  targetProductData = [];
   productCategory: string = '';
-  youMayLikeProducts = [] = [];
+  youMayLikeProducts = [];
+  userReviews = [];
+  userReviewsQuantity: number = 0;
   constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService){
     // checking if path shop-detail is active
     if(_router.url == '/shop-detail'){
@@ -52,10 +54,15 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
     //getting product data
     (await this.prodService.getProductByID(this.productID)).subscribe(async (data:any) => {
       this.targetProductData = data;
-      console.log(this.targetProductData);
       this.productCategory = data.category;
       (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
         this.youMayLikeProducts = data.products;
+      });
+      (await this.prodService.getUserReviews()).subscribe((data:any) => {
+        this.userReviews = data.users;
+        this.userReviewsQuantity = this.userReviews.length;
+        console.log(this.userReviewsQuantity);
+        console.log(this.userReviews);
       })
     });
     // (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
