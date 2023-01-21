@@ -205,27 +205,27 @@
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
     <div class="row px-xl-5">
         <div class="col">
-            <div class="owl-carousel related-carousel">
-                <ng-container *ngFor="let prod of youMayLikeProducts; let index = index">
-                    <div class="product-item bg-light">
-                        <div class="product-img position-relative overflow-hidden">
-                            <img style="height: 200px; border-radius: 10px;" class="img-fluid w-100" src="{{prod['thumbnail']}}" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                <div class="owl-carousel related-carousel">
+                    <ng-container *ngFor="let prod of youMayLikeProducts; let index = index">
+                        <div class="product-item bg-light">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img style="height: 200px; border-radius: 10px;" class="img-fluid w-100" src="{{prod['thumbnail']}}" alt="">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" (click)="redirectToProductPage(prod['id'])"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate">{{prod['title']}}</a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>{{ prod['price'] - (prod['price'] * prod['discountPercentage']/100) | currency }}</h5><h6 class="text-muted ml-2"><del>{{ prod['price'] | currency}}</del></h6>
+                                </div>
+                                <app-product-stars [id]="prod['id']"></app-product-stars>
                             </div>
                         </div>
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate">{{prod['title']}}</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>{{ prod['price'] - (prod['price'] * prod['discountPercentage']/100) | currency }}</h5><h6 class="text-muted ml-2"><del>{{ prod['price'] | currency}}</del></h6>
-                            </div>
-                            <app-product-stars [id]="prod['id']"></app-product-stars>
-                        </div>
-                    </div>
-                </ng-container>
-            </div>
+                    </ng-container>
+                </div>
         </div>
     </div>
 </div>

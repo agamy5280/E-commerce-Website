@@ -12,6 +12,7 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
   targetProductData = [];
   productCategory: string = '';
   youMayLikeProducts = [];
+  youMayLikeProductsID: number = 0;
   userReviews = [];
   userReviewsQuantity: number = 0;
   constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService){
@@ -19,10 +20,6 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
     if(_router.url == '/shop-detail'){
       this._router.navigate(['shop']);
     }
-    //getting product ID from current queryParms
-    route.queryParams.subscribe(params => {
-      this.productID = params['product'];
-    })
   }
   ngAfterViewInit(): void {
     // Related carousel
@@ -52,22 +49,27 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
   }
   async ngOnInit() {
     //getting product data
-    (await this.prodService.getProductByID(this.productID)).subscribe(async (data:any) => {
-      this.targetProductData = data;
-      this.productCategory = data.category;
-      (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
-        this.youMayLikeProducts = data.products;
+    this.route.queryParams.subscribe(async params => {
+      this.productID = params['product'];
+      (await this.prodService.getProductByID(this.productID)).subscribe(async (data:any) => {
+        this.targetProductData = data;
+        this.productCategory = data.category;
+        (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
+          this.youMayLikeProducts = data.products;
+        });
+        (await this.prodService.getUserReviews()).subscribe((data:any) => {
+          this.userReviews = data.users;
+          this.userReviewsQuantity = this.userReviews.length;
+        })
       });
-      (await this.prodService.getUserReviews()).subscribe((data:any) => {
-        this.userReviews = data.users;
-        this.userReviewsQuantity = this.userReviews.length;
-        console.log(this.userReviewsQuantity);
-        console.log(this.userReviews);
-      })
+    })
+  }
+  redirectToProductPage(id:number){
+    this._router.navigate(['shop-detail']);
+    this._router.navigate(['shop-detail'], {
+      queryParams: {
+        product: id,
+      },
     });
-    // (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
-    //   this.youMayLikeProducts = data;
-    //   console.log(this.productCategory)
-    // })
   }
 }
