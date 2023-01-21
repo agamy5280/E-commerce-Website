@@ -33,7 +33,7 @@
             <input type="checkbox" class="custom-control-input" id="{{cat}}"
               [ngModel]="selectedCategoriesIndex === index" (change)="changeSelectionCategories($event, index)"
               [value]="cat">
-            <label class="custom-control-label" for="{{cat}}">{{cat}}</label>
+            <label class="custom-control-label" for="{{cat}}">{{cat | titlecase }}</label>
             <span class="badge border font-weight-normal">5</span>
           </div>
         </ng-container>
