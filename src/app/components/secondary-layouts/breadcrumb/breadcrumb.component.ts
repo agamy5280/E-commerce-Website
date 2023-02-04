@@ -11,6 +11,7 @@ export class BreadcrumbComponent implements OnInit{
   currentKey: string = '';
   currentParams: string = '';
 constructor(private _router: Router, private route: ActivatedRoute){}
+  // Getting Current Searched/Selected on Load.
   ngOnInit(): void {
     this.currentRoute = this._router.url.split('?')[0];
     this.currentRoute = this.currentRoute.replace('/','')

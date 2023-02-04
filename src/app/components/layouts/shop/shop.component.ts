@@ -45,10 +45,11 @@ export class ShopComponent implements OnInit {
   constructor(private catService: CategoryserviceService, private _router: Router, private route: ActivatedRoute, ) {}
   ngOnInit(): void {
     // Generating categories on load
-    this.catService.getCategoryies().subscribe((data: any) => {
+    this.catService.getCategories().subscribe((data: any) => {
       this.categories = data;
     })
     this.route.queryParams.subscribe(params => {
+      // Handling Checkboxes on Shop page.
       if (params['search']) {
         this.isCheckedCustomSearch = true;
         this.selectedCategoriesIndex = -1;
@@ -88,6 +89,7 @@ export class ShopComponent implements OnInit {
       });
     }
   }
+  // Navigating to selected price range of products and handling checkboxes.
   changeSelectionPrices(event, index, minPrice, maxPrice) {
     this.selectedPriceIndex = event.target.checked ? index : undefined;
     if (event.target.checked == false) {

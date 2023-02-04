@@ -27,6 +27,7 @@ export class ProductsShopComponent implements OnInit {
   constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute){
   }
 
+    // Getting products according to User's choice.
   ngOnInit(): void {
     this.route.queryParams.subscribe(async params => {
       if(params['search']){
@@ -51,12 +52,10 @@ export class ProductsShopComponent implements OnInit {
           for(let index = 0; index < 100; index++ ){
             if(data.products[index].price >= this.minPrice && data.products[index].price <= this.maxPrice){
               this.products.push(data.products[index] as never);
-              // this.productsQuantityPrices.emit(this.products.length);
             }
           }
           this.page = 0;
           this.productsQuantity = this.products.length;
-          // this.productsQuantityPrices.emit(this.products.length);
         })
       }else if(params['sortBy']){
         if(params['sortBy'] == 'Stock: High to Low'){
@@ -116,6 +115,7 @@ export class ProductsShopComponent implements OnInit {
       }
     })
   }
+  // Redirecting to Product Page with Product ID.
   redirectToProductPage(id){
     this._router.navigate(['shop-detail'], {
       queryParams: {
@@ -123,6 +123,7 @@ export class ProductsShopComponent implements OnInit {
       },
     });
   }
+  // Changing Params to Which SortingOption User Want.
   showProductsBySorting(sortingOption){
     this._router.navigate([],{
       queryParams:{

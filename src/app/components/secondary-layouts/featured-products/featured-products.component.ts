@@ -10,11 +10,13 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
   constructor(private prodService:ProductserviceService, private route: ActivatedRoute, private _router: Router){}
+  // Getting Featured Products From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getFeaturedProducts()).subscribe((data:any)=>{
       this.featuredProducts = data.products;
     })
   }
+  // Redirecting to Product Detail page onClick.
   redirectToProductPage(id){
     this._router.navigate(['shop-detail'], {
       queryParams: {

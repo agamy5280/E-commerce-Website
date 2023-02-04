@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environments';
 export class ProductserviceService {
 
   constructor(private http: HttpClient) { }
+  // Methods to Retrieve Data from API Upon Request. 
   async getProducts() {
     return this.http.get(`${environment.apiUrl}products?limit=100`)
   }

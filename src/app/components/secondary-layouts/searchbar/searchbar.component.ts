@@ -9,12 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SearchbarComponent {
   searchedKeyword: string = '';
 constructor(private _router: Router, private route: ActivatedRoute) {
+  // Resetting Params if there's no Searched Product.
   route.queryParams.subscribe(params => {
     if(!params['search']){
       this.searchedKeyword = '';
     }
   })
 }
+ // Changing Params according to User's Search.
 onSearchTextChanged(){
   if(this.searchedKeyword){
     this._router.navigate(['shop'], {

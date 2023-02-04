@@ -8,7 +8,8 @@ export class CategoryserviceService {
 
   constructor(private http: HttpClient) { }
 
-  getCategoryies() {
+  // Getting Categories from API
+  getCategories() {
     return this.http.get(`${environment.apiUrl}products/categories`)
   }
 }

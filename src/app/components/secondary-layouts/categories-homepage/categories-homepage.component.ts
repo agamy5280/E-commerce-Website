@@ -10,11 +10,13 @@ import { CategoryserviceService } from 'src/app/services/category/categoryservic
 export class CategoriesHomepageComponent implements OnInit {
   categories = [];
   constructor(private catService: CategoryserviceService, private _router: Router){}
+  // Getting Categories From API on Load.
   ngOnInit(): void {
-    this.catService.getCategoryies().subscribe((data:any)=>{
+    this.catService.getCategories().subscribe((data:any)=>{
       this.categories = data;
     })
   }
+  // Redirecting to Category page in shop onClick.
   goToCategoriesProducts(category){
     this._router.navigate(['shop'], {
       queryParams: {

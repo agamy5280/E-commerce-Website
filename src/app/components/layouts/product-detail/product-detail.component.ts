@@ -16,7 +16,7 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
   userReviews = [];
   userReviewsQuantity: number = 0;
   constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService){
-    // checking if path shop-detail is active
+    // checking if path shop-detail is active.
     if(_router.url == '/shop-detail'){
       this._router.navigate(['shop']);
     }
@@ -54,9 +54,11 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
       (await this.prodService.getProductByID(this.productID)).subscribe(async (data:any) => {
         this.targetProductData = data;
         this.productCategory = data.category;
+        // Getting products similar in category.
         (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
           this.youMayLikeProducts = data.products;
         });
+        // Getting user reviews from API.
         (await this.prodService.getUserReviews()).subscribe((data:any) => {
           this.userReviews = data.users;
           this.userReviewsQuantity = this.userReviews.length;
@@ -64,6 +66,7 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
       });
     })
   }
+  // Navigate to Product Detail page with product ID.
   redirectToProductPage(id:number){
     this._router.navigate(['shop-detail']);
     this._router.navigate(['shop-detail'], {

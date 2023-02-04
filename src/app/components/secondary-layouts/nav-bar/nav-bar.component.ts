@@ -10,8 +10,9 @@ export class NavBarComponent implements OnInit {
   categories = [];
   constructor(private catService: CategoryserviceService){
   }
+  // Getting Categories on Load.
   ngOnInit(): void {
-    this.catService.getCategoryies().subscribe((data:any)=>{
+    this.catService.getCategories().subscribe((data:any)=>{
       this.categories = data;
     })
   }

@@ -10,11 +10,13 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 export class RecentProductsComponent implements OnInit {
   recentProducts = [];
   constructor(private prodService:ProductserviceService, private _router: Router){}
+  // Getting Recent Product From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getRecentProducts()).subscribe((data:any)=>{
       this.recentProducts = data.products;
     })
   }
+  // Redirecting to Product Page onClick.
   redirectToProductPage(id){
     this._router.navigate(['shop-detail'], {
       queryParams: {
