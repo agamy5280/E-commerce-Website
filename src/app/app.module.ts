@@ -25,6 +25,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PageNotFoundComponent } from './components/secondary-layouts/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
+import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { FormsModule } from '@angular/forms';
     ProductsShopComponent,
     BackToTopComponent,
     RecentProductsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,

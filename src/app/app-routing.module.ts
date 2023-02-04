@@ -8,7 +8,8 @@ import { HomepageComponent } from './components/layouts/homepage/homepage.compon
 import { ProductDetailComponent } from './components/layouts/product-detail/product-detail.component';
 import { ShopComponent } from './components/layouts/shop/shop.component';
 import { PageNotFoundComponent } from './components/secondary-layouts/page-not-found/page-not-found.component';
-
+import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
+import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch:'full' },
   { path:'home', component:HomepageComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path:'contact', component:ContactComponent },
   { path:'checkout', component:CheckoutComponent },
   { path:'cart', component:CartComponent },
+  { path:'login', component:LoginPageComponent },
+  { path:'register', component:RegisterPageComponent },
   { path:'**', pathMatch: 'full', component:PageNotFoundComponent },
 ];
 
