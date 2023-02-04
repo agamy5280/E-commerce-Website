@@ -9,7 +9,6 @@ import { ContactComponent } from './components/layouts/contact/contact.component
 import { HomepageComponent } from './components/layouts/homepage/homepage.component';
 import { ProductDetailComponent } from './components/layouts/product-detail/product-detail.component';
 import { ShopComponent } from './components/layouts/shop/shop.component';
-import { HeaderComponent } from './components/secondary-layouts/header/header.component';
 import { SearchbarComponent } from './components/secondary-layouts/searchbar/searchbar.component';
 import { ProductStarsComponent } from './components/secondary-layouts/product-stars/product-stars.component';
 import { FooterComponent } from './components/secondary-layouts/footer/footer.component';
@@ -35,7 +34,6 @@ import { FormsModule } from '@angular/forms';
     ContactComponent,
     CheckoutComponent,
     CartComponent,
-    HeaderComponent,
     SearchbarComponent,
     ProductStarsComponent,
     FooterComponent,

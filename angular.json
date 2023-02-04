@@ -20,6 +20,7 @@
             "outputPath": "dist/e-commerce",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": ["lodash"],
             "polyfills": [
               "zone.js"
             ],
