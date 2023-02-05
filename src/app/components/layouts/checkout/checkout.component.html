@@ -11,53 +11,47 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>First Name</label>
-                        <input class="form-control" type="text" placeholder="John">
+                        <input class="form-control" type="text" placeholder="John" value="{{ userInformation['firstName'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Last Name</label>
-                        <input class="form-control" type="text" placeholder="Doe">
+                        <input class="form-control" type="text" placeholder="Doe" value="{{ userInformation['lastName'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>E-mail</label>
-                        <input class="form-control" type="text" placeholder="example@email.com">
+                        <input class="form-control" type="text" placeholder="example@email.com" value="{{ userInformation['email'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Mobile No</label>
-                        <input class="form-control" type="text" placeholder="+123 456 789">
+                        <input class="form-control" type="text" placeholder="+123 456 789" value="{{ userInformation['phone'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Address Line 1</label>
-                        <input class="form-control" type="text" placeholder="123 Street">
+                        <input class="form-control" type="text" placeholder="123 Street" value="{{ userAddress['address'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Address Line 2</label>
-                        <input class="form-control" type="text" placeholder="123 Street">
+                        <input class="form-control" type="text" placeholder="22572 Toreador Drive">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Country</label>
                         <select class="custom-select">
-                            <option selected>Egypt</option>
-                            <option>USA</option>
+                            <option >Egypt</option>
+                            <option selected>USA</option>
                             <option>Algeria</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>City</label>
-                        <input class="form-control" type="text" placeholder="New York">
+                        <input class="form-control" type="text" placeholder="New York" value="{{ userAddress['city'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>State</label>
-                        <input class="form-control" type="text" placeholder="New York">
+                        <input class="form-control" type="text" placeholder="New York" value="{{ userAddress['state'] }}">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>ZIP Code</label>
-                        <input class="form-control" type="text" placeholder="123">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="newaccount">
-                            <label class="custom-control-label" for="newaccount">Create an account</label>
-                        </div>
+                        <input class="form-control" type="text" placeholder="123" value="{{ userAddress['postalCode'] }}">
                     </div>
                     <div class="col-md-12">
                         <div class="custom-control custom-checkbox">
@@ -125,33 +119,28 @@
             <div class="bg-light p-30 mb-5">
                 <div class="border-bottom">
                     <h6 class="mb-3">Products</h6>
-                    <div class="d-flex justify-content-between">
-                        <p>Product Name 1</p>
-                        <p>$150</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>Product Name 2</p>
-                        <p>$150</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>Product Name 3</p>
-                        <p>$150</p>
-                    </div>
+                    <ng-container *ngFor="let prod of products">
+                        <div class="d-flex justify-content-between">
+                            <p>{{ prod['title'] }}</p>
+                            <p>{{ prod['quantity'] }}x</p>
+                            <p>{{ (prod['price'] * prod['quantity']) | currency }}</p>
+                        </div>
+                    </ng-container>
                 </div>
                 <div class="border-bottom pt-3 pb-2">
                     <div class="d-flex justify-content-between mb-3">
-                        <h6>Subtotal</h6>
-                        <!-- <h6>$150</h6> -->
+                        <h6>Subtotal<del> (After Discount)</del></h6>
+                        <h6>{{ localStorageService.getSubTotal() | currency}}</h6>
                     </div>
                     <div class="d-flex justify-content-between">
                         <h6 class="font-weight-medium">Shipping</h6>
-                        <!-- <h6 class="font-weight-medium">$10</h6> -->
+                        <h6 class="font-weight-medium">{{ localStorageService.addProductToLocalStorage.length * 10  | currency}}</h6>
                     </div>
                 </div>
                 <div class="pt-2">
                     <div class="d-flex justify-content-between mt-2">
-                        <h5>Total</h5>
-                        <!-- <h5>$160</h5> -->
+                        <h5>Total (After Shipping)</h5>
+                        <h5>{{ localStorageService.getTotal() | currency}}</h5>
                     </div>
                 </div>
             </div>
