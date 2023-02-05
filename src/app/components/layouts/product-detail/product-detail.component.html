@@ -42,18 +42,18 @@
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
+                            <button class="btn btn-primary btn-minus" (click)="localStorageService.decQuantity(targetProductData['id'])">
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                        <input type="text" class="form-control bg-secondary border-0 text-center" value="{{ localStorageService.getProductQuantity(targetProductData['id']) }}">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <button class="btn btn-primary btn-plus" (click)="localStorageService.incQuantity(targetProductData['id'])">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                    <button class="btn btn-primary px-3" (click)="addProductToCart(targetProductData)"><i class="fa fa-shopping-cart mr-1"></i> Add To
                         Cart</button>
                 </div>
                 <div class="d-flex pt-2">

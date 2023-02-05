@@ -49,7 +49,7 @@ export class LocalstorageserviceService {
       return products?.length || 0;
     }
   
-    decQuantity(id) {
+    decQuantity(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
         if(products[i].id === id){
@@ -60,7 +60,7 @@ export class LocalstorageserviceService {
       }
       localStorage.setItem('cartProducts', JSON.stringify(products));
     }
-    incQuantity(id) {
+    incQuantity(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
         if(products[i].id === id){
@@ -69,7 +69,7 @@ export class LocalstorageserviceService {
       }
       localStorage.setItem('cartProducts', JSON.stringify(products));
     }
-    removeItem(id) {
+    removeItem(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
         if(products[i].id === id){
@@ -92,6 +92,16 @@ export class LocalstorageserviceService {
     let shipping: number = products.length * 10
     let total: number = subTotal + shipping
     return total
+  }
+  getProductQuantity(id:number) {
+    let products = this.getProductsFromLocalStorage()
+    let quantity:number = 0
+    for (let i = 0; i < products.length; i++){
+      if(products[i].id === id){
+        quantity = products[i].quantity
+      }
+    }
+    return quantity
   }
 
 }

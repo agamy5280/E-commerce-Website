@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 declare var $: any;
 @Component({
@@ -15,7 +16,7 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
   youMayLikeProductsID: number = 0;
   userReviews = [];
   userReviewsQuantity: number = 0;
-  constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService){
+  constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService, protected localStorageService: LocalstorageserviceService){
     // checking if path shop-detail is active.
     if(_router.url == '/shop-detail'){
       this._router.navigate(['shop']);
@@ -74,5 +75,9 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
         product: id,
       },
     });
+  }
+  addProductToCart(product:object) {
+    this.localStorageService.addProductToLocalStorage(product, 1)
+    this._router.navigate(['/cart']);
   }
 }
