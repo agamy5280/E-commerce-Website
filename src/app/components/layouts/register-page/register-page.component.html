@@ -9,16 +9,22 @@
             <i class="fas fa-user"></i>
           </div>
       
-          <!-- Login Form -->
-          <form id="myForm">
-            <input type="text" id="firstName" name="firstName" placeholder="First Name">
-            <input type="text" id="lastName" name="lastName" placeholder="Last Name">
-            <input type="text" id="age" name="age" placeholder="Age">
-            <input type="text" id="password" name="password" placeholder="Password">
-            <input type="button" value="Sign Up" id="submit">
+          <!-- Register Form -->
+          <form id="myForm" [formGroup]="registerForm" id="registerForm" (ngSubmit)="register()">
+            <input type="text" id="firstName" placeholder="First Name" formControlName="firstName">
+            <input type="text" id="lastName" placeholder="Last Name" formControlName="lastName">
+            <input type="password" id="password" placeholder="Password" formControlName="password">
+            <input type="submit" value="Sign Up" id="submit" [hidden]="!registerForm.valid">
           </form>
-      
-          <!-- Remind Passowrd -->
+          <ng-container *ngIf="registerForm.controls['firstName'].touched">
+            <p class="text-danger" *ngIf="registerForm.controls['firstName']?.errors?.['required']">Please type your First Name!</p>
+          </ng-container>
+          <ng-container *ngIf="registerForm.controls['lastName'].touched">
+            <p class="text-danger" *ngIf="registerForm.controls['lastName']?.errors?.['required']">Please type your Last Name!</p>
+          </ng-container>
+          <ng-container *ngIf="registerForm.controls['password'].touched">
+            <p class="text-danger" *ngIf="registerForm.controls['password']?.errors?.['required']">Please type your password!</p>
+          </ng-container>
           <div id="formFooter">
             <a class="underlineHover" href="login">Already have an account?, Login Now!</a>
           </div>

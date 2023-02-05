@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/layouts/cart/cart.component';
@@ -24,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PageNotFoundComponent } from './components/secondary-layouts/page-not-found/page-not-found.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
 import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
 @NgModule({
@@ -48,7 +47,8 @@ import { RegisterPageComponent } from './components/layouts/register-page/regist
     RecentProductsComponent,
     PageNotFoundComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,8 @@ import { RegisterPageComponent } from './components/layouts/register-page/regist
     BrowserAnimationsModule,
     MatPaginatorModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -72,21 +72,37 @@
                   >0</span
                 >
               </a>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn"
-                  data-toggle="dropdown"
-                >
-                  Hello, Stranger!
-                  <i class="fas fa-caret-down"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-dark">
-                  <a class="dropdown-item" routerLink="/login">Sign in</a>
-                  <a class="dropdown-item" routerLink="/register">Sign up</a>
-                  <a class="dropdown-item" routerLink="/">Logout</a>
+              <ng-container *ngIf="myLocalStorage">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-toggle="dropdown"
+                  >
+                    Hello, {{myLocalStorage.firstName}}!
+                    <i class="fas fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-dark">
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                  </div>
                 </div>
-              </div>
+              </ng-container>
+              <ng-container *ngIf="!myLocalStorage">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-toggle="dropdown"
+                  >
+                    Hello, Stranger!
+                    <i class="fas fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-dark">
+                    <a class="dropdown-item" routerLink="/login">Sign in</a>
+                    <a class="dropdown-item" routerLink="/register">Sign up</a>
+                  </div>
+                </div>
+              </ng-container>
             </div>
           </div>
         </nav>

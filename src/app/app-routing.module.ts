@@ -10,6 +10,7 @@ import { ShopComponent } from './components/layouts/shop/shop.component';
 import { PageNotFoundComponent } from './components/secondary-layouts/page-not-found/page-not-found.component';
 import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
 import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch:'full' },
   { path:'home', component:HomepageComponent },
@@ -17,9 +18,9 @@ const routes: Routes = [
   { path:'shop-detail', component:ProductDetailComponent, children:[{
     path:':id', component:ProductDetailComponent
   }] },
-  { path:'contact', component:ContactComponent },
-  { path:'checkout', component:CheckoutComponent },
-  { path:'cart', component:CartComponent },
+  { path:'contact', component:ContactComponent,canActivate:[AuthGuard] },
+  { path:'checkout', component:CheckoutComponent,canActivate:[AuthGuard] },
+  { path:'cart', component:CartComponent,canActivate:[AuthGuard] },
   { path:'login', component:LoginPageComponent },
   { path:'register', component:RegisterPageComponent },
   { path:'**', pathMatch: 'full', component:PageNotFoundComponent },
