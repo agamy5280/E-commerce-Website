@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryserviceService } from 'src/app/services/category/categoryservice.service';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { LoginserviceService } from 'src/app/services/user/loginservice.service';
 
 @Component({
@@ -10,8 +11,8 @@ import { LoginserviceService } from 'src/app/services/user/loginservice.service'
 })
 export class NavBarComponent implements OnInit {
   categories = [];
-  myLocalStorage = JSON.parse(localStorage.getItem('userData')) || '';
-  constructor(private catService: CategoryserviceService, protected loginService: LoginserviceService, private _router: Router){
+  myLocalStorageUserData = JSON.parse(localStorage.getItem('userData')) || '';
+  constructor(private catService: CategoryserviceService, protected loginService: LoginserviceService, private _router: Router, protected localStorageService: LocalstorageserviceService){
   }
   // Getting Categories on Load.
   ngOnInit(): void {

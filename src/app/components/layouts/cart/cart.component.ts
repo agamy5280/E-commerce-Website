@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
-
+export class CartComponent implements DoCheck{
+  products: string [] = [];
+  constructor(protected localStorageService: LocalstorageserviceService){
+  }
+  ngDoCheck(){
+    this.products = this.localStorageService.getProductsFromLocalStorage()
+  }
 }

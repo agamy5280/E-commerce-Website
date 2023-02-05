@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 })
 export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
-  constructor(private prodService:ProductserviceService, private route: ActivatedRoute, private _router: Router){}
+  constructor(private prodService:ProductserviceService, private route: ActivatedRoute, private _router: Router, private localStorageService: LocalstorageserviceService){}
   // Getting Featured Products From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getFeaturedProducts()).subscribe((data:any)=>{
@@ -17,11 +18,14 @@ export class FeaturedProductsComponent implements OnInit {
     })
   }
   // Redirecting to Product Detail page onClick.
-  redirectToProductPage(id){
+  redirectToProductPage(id:number){
     this._router.navigate(['shop-detail'], {
       queryParams: {
         product: id,
       },
     });
+  }
+  addProductToCart(product:object) {
+    this.localStorageService.addProductToLocalStorage(product, 1)
   }
 }

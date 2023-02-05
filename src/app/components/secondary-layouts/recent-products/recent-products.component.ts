@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 })
 export class RecentProductsComponent implements OnInit {
   recentProducts = [];
-  constructor(private prodService:ProductserviceService, private _router: Router){}
+  constructor(private prodService:ProductserviceService, private _router: Router, private localStorageService: LocalstorageserviceService){}
   // Getting Recent Product From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getRecentProducts()).subscribe((data:any)=>{
@@ -23,5 +24,8 @@ export class RecentProductsComponent implements OnInit {
         product: id,
       },
     });
+  }
+  addProductToCart(product:object) {
+    this.localStorageService.addProductToLocalStorage(product, 1)
   }
 }

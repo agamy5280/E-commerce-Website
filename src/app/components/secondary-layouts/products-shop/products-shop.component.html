@@ -31,7 +31,11 @@
           <div class="product-img position-relative overflow-hidden">
             <img style="height: 200px; border-radius: 10px;" class="img-fluid w-100" src="{{ prod['thumbnail'] }}" alt="">
             <div class="product-action">
-              <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+              <a
+                  class="btn btn-outline-dark btn-square"
+                  (click)="addProductToCart(prod)"
+                  ><i class="fa fa-shopping-cart"></i
+                ></a>
               <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
               <a class="btn btn-outline-dark btn-square" (click)="redirectToProductPage(prod['id'])"><i class="fa fa-search"></i></a>
             </div>

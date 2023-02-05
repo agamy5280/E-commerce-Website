@@ -19,170 +19,49 @@
             </tr>
           </thead>
           <tbody class="align-middle" id="products">
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/product-1.jpg" alt="" style="width: 50px" />
-                Product1
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <div
-                  class="input-group quantity mx-auto"
-                  style="width: 100px"
-                >
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="decBtn btn btn-sm btn-primary btn-minus"
-                    >
-                      <i class="fa fa-minus"></i>
-                    </button>
+            <ng-container *ngFor="let prod of products; let index = index">
+              <tr>
+                <td class="align-middle">
+                  <img src="{{ prod['thumbnail'] }}" alt="" style="width: 50px" />
+                  {{ prod['title'] }}
+                </td>
+                <td class="align-middle">{{ prod['price'] | currency }}</td>
+                <td class="align-middle">
+                  <div
+                    class="input-group quantity mx-auto"
+                    style="width: 100px"
+                  >
+                    <div class="input-group-btn">
+                      <button
+                        type="button"
+                        class="decBtn btn btn-sm btn-primary btn-minus" (click)="localStorageService.decQuantity(prod['id'])"
+                      >
+                        <i class="fa fa-minus"></i>
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
+                      value="{{ prod['quantity'] }}"
+                    />
+                    <div class="input-group-btn">
+                      <button
+                        type="button"
+                        class="incBtn btn btn-sm btn-primary btn-plus" (click)="localStorageService.incQuantity(prod['id'])"
+                      >
+                        <i class="fa fa-plus"></i>
+                      </button>
+                    </div>
                   </div>
-                  <input
-                    type="text"
-                    class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
-                    value="100"
-                  />
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="incBtn btn btn-sm btn-primary btn-plus"
-                    >
-                      <i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <button class="btn btn-sm btn-danger" type="button">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/product-1.jpg" alt="" style="width: 50px" />
-                Product1
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <div
-                  class="input-group quantity mx-auto"
-                  style="width: 100px"
-                >
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="decBtn btn btn-sm btn-primary btn-minus"
-                    >
-                      <i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
-                    value="100"
-                  />
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="incBtn btn btn-sm btn-primary btn-plus"
-                    >
-                      <i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <button class="btn btn-sm btn-danger" type="button">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/product-1.jpg" alt="" style="width: 50px" />
-                Product1
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <div
-                  class="input-group quantity mx-auto"
-                  style="width: 100px"
-                >
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="decBtn btn btn-sm btn-primary btn-minus"
-                    >
-                      <i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
-                    value="100"
-                  />
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="incBtn btn btn-sm btn-primary btn-plus"
-                    >
-                      <i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <button class="btn btn-sm btn-danger" type="button">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/product-1.jpg" alt="" style="width: 50px" />
-                Product1
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <div
-                  class="input-group quantity mx-auto"
-                  style="width: 100px"
-                >
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="decBtn btn btn-sm btn-primary btn-minus"
-                    >
-                      <i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
-                    value="100"
-                  />
-                  <div class="input-group-btn">
-                    <button
-                      type="button"
-                      class="incBtn btn btn-sm btn-primary btn-plus"
-                    >
-                      <i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">$100</td>
-              <td class="align-middle">
-                <button class="btn btn-sm btn-danger" type="button">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
+                </td>
+                <td class="align-middle">{{ (prod['price'] * prod['quantity']) | currency }}</td>
+                <td class="align-middle">
+                  <button class="btn btn-sm btn-danger" type="button" (click)="localStorageService.removeItem(prod['id'])">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>
@@ -205,24 +84,24 @@
         <div class="bg-light p-30 mb-5">
           <div class="border-bottom pb-2">
             <div class="d-flex justify-content-between mb-3">
-              <h6>Subtotal</h6>
-              <h6 id="sub-total"></h6>
+              <h6>Subtotal<del> (After Discount)</del></h6>
+              <h6 id="sub-total">{{ localStorageService.getSubTotal() | currency}}</h6>
             </div>
             <div class="d-flex justify-content-between">
               <h6 class="font-weight-medium">Shipping</h6>
-              <h6 class="font-weight-medium" id="shipping"></h6>
+              <h6 class="font-weight-medium" id="shipping">{{ products.length * 10  | currency}}</h6>
             </div>
           </div>
           <div class="pt-2">
             <div class="d-flex justify-content-between mt-2">
-              <h5>Total</h5>
-              <h5 id="total"></h5>
+              <h5>Total (After Shipping)</h5>
+              <h5 id="total">{{ localStorageService.getTotal() | currency}}</h5>
             </div>
-            <button
+            <a routerLink="/checkout"
               class="btn btn-block btn-primary font-weight-bold my-3 py-3"
             >
               Proceed To Checkout
-            </button>
+            </a>
           </div>
         </div>
       </div>

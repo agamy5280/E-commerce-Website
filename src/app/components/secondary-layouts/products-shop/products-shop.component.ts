@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 import {orderBy} from 'lodash';
+import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 @Component({
   selector: 'app-products-shop',
   templateUrl: './products-shop.component.html',
@@ -24,7 +25,7 @@ export class ProductsShopComponent implements OnInit {
     'Best Rating',
     'Clear'
   ]
-  constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute){
+  constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute, private localStorageService: LocalstorageserviceService){
   }
 
     // Getting products according to User's choice.
@@ -131,4 +132,7 @@ export class ProductsShopComponent implements OnInit {
       }
     })
   } 
+  addProductToCart(product:object) {
+    this.localStorageService.addProductToLocalStorage(product, 1)
+  }
 }

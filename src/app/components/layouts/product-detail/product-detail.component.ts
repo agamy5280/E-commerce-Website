@@ -8,7 +8,7 @@ declare var $: any;
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements AfterViewInit, OnInit {
-  productID: number;
+  productID: number = 0;
   targetProductData = [];
   productCategory: string = '';
   youMayLikeProducts = [];
