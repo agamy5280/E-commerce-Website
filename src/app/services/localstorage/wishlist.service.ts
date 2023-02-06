@@ -42,4 +42,13 @@ export class WishlistService {
     const products = this.getProductsFromLocalStorage();
     return products?.length || 0;
   }
+  removeItem(id:number) {
+    let products = this.getProductsFromLocalStorage()
+    for (let i = 0; i < products.length; i++){
+      if(products[i].id === id){
+        products.splice(i, 1)
+      }
+  }
+  localStorage.setItem('wishlistProducts', JSON.stringify(products));
+}
 }
