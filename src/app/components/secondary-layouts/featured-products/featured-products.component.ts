@@ -14,7 +14,7 @@ export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
   myLocalStorageUserData = JSON.parse(localStorage.getItem('userData')) || '';
   constructor(private prodService:ProductserviceService,
-      private _router: Router,
+       private _router: Router,
        private localStorageService: LocalstorageserviceService,
        private wishListService: WishlistService){}
   // Getting Featured Products From API on Load.

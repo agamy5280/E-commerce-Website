@@ -16,7 +16,11 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
   youMayLikeProductsID: number = 0;
   userReviews = [];
   userReviewsQuantity: number = 0;
-  constructor(private route: ActivatedRoute, private _router: Router, private prodService:ProductserviceService, protected localStorageService: LocalstorageserviceService){
+  productRating: number;
+  constructor(private route: ActivatedRoute,
+      private _router: Router,
+      private prodService:ProductserviceService,
+      protected localStorageService: LocalstorageserviceService){
     // checking if path shop-detail is active.
     if(_router.url == '/shop-detail'){
       this._router.navigate(['shop']);
@@ -48,13 +52,14 @@ export class ProductDetailComponent implements AfterViewInit, OnInit {
       });
     },1000)
   }
-  async ngOnInit() {
+  async ngOnInit(){
     //getting product data
     this.route.queryParams.subscribe(async params => {
       this.productID = params['product'];
       (await this.prodService.getProductByID(this.productID)).subscribe(async (data:any) => {
         this.targetProductData = data;
         this.productCategory = data.category;
+        this.productRating = Number(JSON.stringify(data.rating));
         // Getting products similar in category.
         (await this.prodService.getProductByCategory(this.productCategory)).subscribe((data:any) => {
           this.youMayLikeProducts = data.products;

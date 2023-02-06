@@ -13,13 +13,14 @@ export class CheckoutComponent implements OnInit, DoCheck {
   userInformation:object = []
   userAddress: object = []
   constructor(private userData: UserDataService, protected localStorageService: LocalstorageserviceService){}
-  
+  // Getting Auth user data from API
   async ngOnInit() {
     (await this.userData.getUserData(this.myUserLocalStorage.id)).subscribe((data:object) => {
       this.userInformation = data
       this.userAddress = data['address']
     })
   }
+  // Getting Product Data from LocalStorage
   ngDoCheck(){
     this.products = this.localStorageService.getProductsFromLocalStorage()
   }

@@ -48,7 +48,7 @@ export class LocalstorageserviceService {
       const products = this.getProductsFromLocalStorage();
       return products?.length || 0;
     }
-  
+    // Decrease Quantity of a selected product on click
     decQuantity(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
@@ -60,6 +60,7 @@ export class LocalstorageserviceService {
       }
       localStorage.setItem('cartProducts', JSON.stringify(products));
     }
+    // Increase Quantity of a selected product on click
     incQuantity(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
@@ -69,6 +70,7 @@ export class LocalstorageserviceService {
       }
       localStorage.setItem('cartProducts', JSON.stringify(products));
     }
+    // Remove Item on click
     removeItem(id:number) {
       let products = this.getProductsFromLocalStorage()
       for (let i = 0; i < products.length; i++){
@@ -78,6 +80,7 @@ export class LocalstorageserviceService {
     }
     localStorage.setItem('cartProducts', JSON.stringify(products));
   }
+  // Getting subTotal of cart
   getSubTotal() {
     let products = this.getProductsFromLocalStorage()
     let subTotal: number = 0;
@@ -86,6 +89,7 @@ export class LocalstorageserviceService {
     })
     return subTotal
   }
+  // Getting Total of cart
   getTotal() {
     let products = this.getProductsFromLocalStorage()
     let subTotal: number = this.getSubTotal()
@@ -93,6 +97,7 @@ export class LocalstorageserviceService {
     let total: number = subTotal + shipping
     return total
   }
+  // Getting product Quantity
   getProductQuantity(id:number) {
     let products = this.getProductsFromLocalStorage()
     let quantity:number = 0

@@ -15,8 +15,8 @@ export class NavBarComponent implements OnInit {
   categories = [];
   myLocalStorageUserData = JSON.parse(localStorage.getItem('userData')) || '';
   constructor(private catService: CategoryserviceService,
-     protected loginService: LoginserviceService,
-      private _router: Router,
+       protected loginService: LoginserviceService,
+       private _router: Router,
        protected localStorageService: LocalstorageserviceService,
        protected wishListService: WishlistService){
   }

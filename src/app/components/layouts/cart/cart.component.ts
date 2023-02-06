@@ -10,6 +10,7 @@ export class CartComponent implements DoCheck{
   products: string [] = [];
   constructor(protected localStorageService: LocalstorageserviceService){
   }
+  // getting Data of products from LocalStorage.
   ngDoCheck(){
     this.products = this.localStorageService.getProductsFromLocalStorage()
   }

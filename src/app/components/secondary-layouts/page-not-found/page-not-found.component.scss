@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
 /*Variables*/
 .left-section .inner-content {
   position: absolute;
@@ -7,42 +8,47 @@
   display: grid;
   justify-items: center;
   grid-row-gap: 20px;
+
   .btn {
-        z-index: 1;
-        overflow: hidden;
-        background: transparent;
-        position: relative;
-        padding: 8px 50px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-size: 1em;
-        letter-spacing: 2px;
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    padding: 8px 50px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+    font-weight: bold;
+    margin: 5px 0px;
+
+    &.green {
+      border: 4px solid var(--green);
+      color: var(--blue);
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0%;
+        height: 100%;
+        background: var(--green);
+        z-index: -1;
         transition: 0.2s ease;
-        font-weight: bold;
-        margin: 5px 0px;
-        &.green {
-          border: 4px solid var(--green);
-          color: var(--blue);
-          &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--green);
-            z-index: -1;
-            transition: 0.2s ease;
-          }
-          &:hover {
-            color: var(--white);
-            background: var(--green);
-            transition: 0.2s ease;
-            &:before {
-              width: 100%;
-            }
-          }
+      }
+
+      &:hover {
+        color: var(--white);
+        background: var(--green);
+        transition: 0.2s ease;
+
+        &:before {
+          width: 100%;
         }
+      }
+    }
   }
 }
 
@@ -50,7 +56,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -68,6 +75,7 @@ body {
   height: 100%;
   background: linear-gradient(#0C0E10, #446182);
 }
+
 .background .ground {
   position: absolute;
   bottom: 0;
@@ -75,6 +83,7 @@ body {
   height: 25vh;
   background: #0C0E10;
 }
+
 @media (max-width: 770px) {
   .background .ground {
     height: 0vh;
@@ -91,6 +100,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
 }
+
 @media (max-width: 770px) {
   .container {
     flex-direction: column;
@@ -98,13 +108,15 @@ body {
   }
 }
 
-.left-section, .right-section {
+.left-section,
+.right-section {
   position: relative;
 }
 
 .left-section {
   width: 40%;
 }
+
 @media (max-width: 770px) {
   .left-section {
     width: 100%;
@@ -113,6 +125,7 @@ body {
     top: 0;
   }
 }
+
 @media (max-width: 770px) {
   .left-section .inner-content {
     position: relative;
@@ -128,6 +141,7 @@ body {
   padding: 0;
   text-shadow: 0 0 1rem #fefefe;
 }
+
 @media (max-width: 770px) {
   .heading {
     font-size: 7em;
@@ -144,6 +158,7 @@ body {
   padding: 0 1rem;
   margin: 0 auto;
 }
+
 @media (max-width: 770px) {
   .subheading {
     font-size: 1.3em;
@@ -155,6 +170,7 @@ body {
 .right-section {
   width: 50%;
 }
+
 @media (max-width: 770px) {
   .right-section {
     width: 100%;
@@ -172,31 +188,40 @@ body {
   max-width: 100%;
   max-height: 100%;
 }
+
 @media (max-width: 770px) {
   .svgimg {
     padding: 0;
   }
 }
+
 .svgimg .bench-legs {
   fill: #0C0E10;
 }
-.svgimg .top-bench, .svgimg .bottom-bench {
+
+.svgimg .top-bench,
+.svgimg .bottom-bench {
   stroke: #0C0E10;
   stroke-width: 1px;
   fill: #5B3E2B;
 }
+
 .svgimg .bottom-bench path:nth-child(1) {
   fill: #432d20;
 }
+
 .svgimg .lamp-details {
   fill: #202425;
 }
+
 .svgimg .lamp-accent {
   fill: #2c3133;
 }
+
 .svgimg .lamp-bottom {
   fill: linear-gradient(#202425, #0C0E10);
 }
+
 .svgimg .lamp-light {
   fill: #EFEFEF;
 }
@@ -205,9 +230,11 @@ body {
   0% {
     text-shadow: 0 0 1rem #fefefe;
   }
+
   50% {
     text-shadow: 0 0 1.85rem #ededed;
   }
+
   100% {
     text-shadow: 0 0 1rem #fefefe;
   }
