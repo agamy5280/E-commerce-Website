@@ -1,20 +1,7 @@
 .body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  @media only screen and (min-width: 1920px) {
-    background-image: url("/assets/img/login-background.jpg");
-    background-repeat: no-repeat;
-  }
-  @media only screen and (max-width: 1680px) {
-    background-image: url("/assets/img/login-background.jpg");
-    background-size: 1440px;
-    background-repeat: no-repeat;
-  }
-  @media only screen and (max-width: 480px) {
-    background-image: url("/assets/img/login-background.jpg");
-    background-size: 480px;
-    background-repeat: no-repeat;
-  }
+  background-color: #1C82AD;
 }
 
 a {
