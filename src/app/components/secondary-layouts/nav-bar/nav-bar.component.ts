@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 import { CategoryserviceService } from 'src/app/services/category/categoryservice.service';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { WishlistService } from 'src/app/services/localstorage/wishlist.service';

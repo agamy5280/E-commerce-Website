@@ -56,22 +56,24 @@
               <a routerLink="/contact" routerLinkActive="active" class="nav-item nav-link">Contact</a>
             </div>
             <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-              <a routerLink="/wishlist" class="btn px-0">
-                <i  id="icon" class="fas fa-heart text-primary"></i>
-                <span
-                  class="badge text-secondary border border-secondary rounded-circle"
-                  style="padding-bottom: 2px"
-                  >{{ wishListService.getQuantity() }}</span
-                >
-              </a>
-              <a routerLink="/cart" class="btn px-0 ml-3">
-                <i id="icon" class="fas fa-shopping-cart text-primary"></i>
-                <span
-                  class="badge text-secondary border border-secondary rounded-circle"
-                  style="padding-bottom: 2px"
-                  >{{ localStorageService.getQuantity() }}</span
-                >
-              </a>
+              <ng-container *ngIf="myLocalStorageUserData">
+                <a routerLink="/wishlist" class="btn px-0">
+                  <i  id="icon" class="fas fa-heart text-primary"></i>
+                  <span
+                    class="badge text-secondary border border-secondary rounded-circle"
+                    style="padding-bottom: 2px"
+                    >{{ wishListService.getQuantity() }}</span
+                  >
+                </a>
+                <a routerLink="/cart" class="btn px-0 ml-3">
+                  <i id="icon" class="fas fa-shopping-cart text-primary"></i>
+                  <span
+                    class="badge text-secondary border border-secondary rounded-circle"
+                    style="padding-bottom: 2px"
+                    >{{ localStorageService.getQuantity() }}</span
+                  >
+                </a>
+              </ng-container>
               <ng-container *ngIf="myLocalStorageUserData">
                 <div class="btn-group">
                   <button

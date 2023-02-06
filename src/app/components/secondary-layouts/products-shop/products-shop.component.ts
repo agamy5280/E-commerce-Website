@@ -4,6 +4,7 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 import {orderBy} from 'lodash';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { WishlistService } from 'src/app/services/localstorage/wishlist.service';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 @Component({
   selector: 'app-products-shop',
   templateUrl: './products-shop.component.html',
@@ -26,6 +27,7 @@ export class ProductsShopComponent implements OnInit {
     'Best Rating',
     'Clear'
   ]
+  myLocalStorageUserData = JSON.parse(localStorage.getItem('userData')) || '';
   constructor(private prodService: ProductserviceService,
        private _router: Router,
        private route: ActivatedRoute,
@@ -138,9 +140,17 @@ export class ProductsShopComponent implements OnInit {
     })
   } 
   addProductToCart(product:object) {
-    this.localStorageService.addProductToLocalStorage(product, 1)
+    if(this.myLocalStorageUserData){
+      this.localStorageService.addProductToLocalStorage(product, 1)
+    }else {
+      this._router.navigate(['/login'])
+    }
   }
   addProductToWishList(product:object) {
-    this.wishListService.addProductToLocalStorage(product)
+    if(this.myLocalStorageUserData){
+      this.wishListService.addProductToLocalStorage(product)
+      }else {
+        this._router.navigate(['/login'])
+      }
   }
 }

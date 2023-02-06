@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
 import { WishlistService } from 'src/app/services/localstorage/wishlist.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
@@ -11,6 +12,7 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 })
 export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
+  myLocalStorageUserData = JSON.parse(localStorage.getItem('userData')) || '';
   constructor(private prodService:ProductserviceService,
       private _router: Router,
        private localStorageService: LocalstorageserviceService,
@@ -30,9 +32,17 @@ export class FeaturedProductsComponent implements OnInit {
     });
   }
   addProductToCart(product:object) {
-    this.localStorageService.addProductToLocalStorage(product, 1)
+    if(this.myLocalStorageUserData){
+      this.localStorageService.addProductToLocalStorage(product, 1)
+    }else {
+      this._router.navigate(['/login'])
+    }
   }
   addProductToWishList(product:object) {
-    this.wishListService.addProductToLocalStorage(product)
+    if(this.myLocalStorageUserData){
+      this.wishListService.addProductToLocalStorage(product)
+      }else {
+        this._router.navigate(['/login'])
+      }
   }
 }
