@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 import {orderBy} from 'lodash';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
+import { WishlistService } from 'src/app/services/localstorage/wishlist.service';
 @Component({
   selector: 'app-products-shop',
   templateUrl: './products-shop.component.html',
@@ -25,7 +26,11 @@ export class ProductsShopComponent implements OnInit {
     'Best Rating',
     'Clear'
   ]
-  constructor(private prodService: ProductserviceService, private _router: Router, private route: ActivatedRoute, private localStorageService: LocalstorageserviceService){
+  constructor(private prodService: ProductserviceService,
+       private _router: Router,
+       private route: ActivatedRoute,
+       private localStorageService: LocalstorageserviceService,
+       private wishListService: WishlistService){
   }
 
     // Getting products according to User's choice.
@@ -117,7 +122,7 @@ export class ProductsShopComponent implements OnInit {
     })
   }
   // Redirecting to Product Page with Product ID.
-  redirectToProductPage(id){
+  redirectToProductPage(id:number){
     this._router.navigate(['shop-detail'], {
       queryParams: {
         product: id,
@@ -134,5 +139,8 @@ export class ProductsShopComponent implements OnInit {
   } 
   addProductToCart(product:object) {
     this.localStorageService.addProductToLocalStorage(product, 1)
+  }
+  addProductToWishList(product:object) {
+    this.wishListService.addProductToLocalStorage(product)
   }
 }

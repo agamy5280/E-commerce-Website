@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './components/secondary-layouts/page-not-f
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
 import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
+import { WishlistComponent } from './components/layouts/wishlist/wishlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { RegisterPageComponent } from './components/layouts/register-page/regist
     PageNotFoundComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    WishlistComponent,
     
   ],
   imports: [

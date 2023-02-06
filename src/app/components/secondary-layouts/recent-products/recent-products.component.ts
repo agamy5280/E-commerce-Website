@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
+import { WishlistService } from 'src/app/services/localstorage/wishlist.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 })
 export class RecentProductsComponent implements OnInit {
   recentProducts = [];
-  constructor(private prodService:ProductserviceService, private _router: Router, private localStorageService: LocalstorageserviceService){}
+  constructor(private prodService:ProductserviceService,
+    private _router: Router,
+    private localStorageService: LocalstorageserviceService,
+    private wishListService: WishlistService ){}
   // Getting Recent Product From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getRecentProducts()).subscribe((data:any)=>{
@@ -18,7 +22,7 @@ export class RecentProductsComponent implements OnInit {
     })
   }
   // Redirecting to Product Page onClick.
-  redirectToProductPage(id){
+  redirectToProductPage(id:number){
     this._router.navigate(['shop-detail'], {
       queryParams: {
         product: id,
@@ -27,5 +31,9 @@ export class RecentProductsComponent implements OnInit {
   }
   addProductToCart(product:object) {
     this.localStorageService.addProductToLocalStorage(product, 1)
+  }
+
+  addProductToWishList(product:object) {
+    this.wishListService.addProductToLocalStorage(product)
   }
 }

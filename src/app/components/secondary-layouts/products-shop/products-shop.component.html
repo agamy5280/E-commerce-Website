@@ -36,7 +36,7 @@
                   (click)="addProductToCart(prod)"
                   ><i class="fa fa-shopping-cart"></i
                 ></a>
-              <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+              <a class="btn btn-outline-dark btn-square" (click)="addProductToWishList(prod)"><i class="far fa-heart"></i></a>
               <a class="btn btn-outline-dark btn-square" (click)="redirectToProductPage(prod['id'])"><i class="fa fa-search"></i></a>
             </div>
           </div>

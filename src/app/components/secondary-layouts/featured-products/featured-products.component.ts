@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LocalstorageserviceService } from 'src/app/services/localstorage/localstorageservice.service';
+import { WishlistService } from 'src/app/services/localstorage/wishlist.service';
 import { ProductserviceService } from 'src/app/services/product/productservice.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { ProductserviceService } from 'src/app/services/product/productservice.s
 })
 export class FeaturedProductsComponent implements OnInit {
   featuredProducts = [];
-  constructor(private prodService:ProductserviceService, private route: ActivatedRoute, private _router: Router, private localStorageService: LocalstorageserviceService){}
+  constructor(private prodService:ProductserviceService,
+      private _router: Router,
+       private localStorageService: LocalstorageserviceService,
+       private wishListService: WishlistService){}
   // Getting Featured Products From API on Load.
   async ngOnInit(): Promise<void> {
     (await this.prodService.getFeaturedProducts()).subscribe((data:any)=>{
@@ -27,5 +31,8 @@ export class FeaturedProductsComponent implements OnInit {
   }
   addProductToCart(product:object) {
     this.localStorageService.addProductToLocalStorage(product, 1)
+  }
+  addProductToWishList(product:object) {
+    this.wishListService.addProductToLocalStorage(product)
   }
 }

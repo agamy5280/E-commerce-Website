@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './components/secondary-layouts/page-not-f
 import { LoginPageComponent } from './components/layouts/login-page/login-page.component';
 import { RegisterPageComponent } from './components/layouts/register-page/register-page.component';
 import { AuthGuard } from './auth/auth.guard';
+import { WishlistComponent } from './components/layouts/wishlist/wishlist.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch:'full' },
   { path:'home', component:HomepageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path:'contact', component:ContactComponent,canActivate:[AuthGuard] },
   { path:'checkout', component:CheckoutComponent,canActivate:[AuthGuard] },
   { path:'cart', component:CartComponent,canActivate:[AuthGuard] },
+  { path:'wishlist', component:WishlistComponent,canActivate:[AuthGuard] },
   { path:'login', component:LoginPageComponent },
   { path:'register', component:RegisterPageComponent },
   { path:'**', pathMatch: 'full', component:PageNotFoundComponent },
