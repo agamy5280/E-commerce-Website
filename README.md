@@ -93,7 +93,7 @@ Run Application
 ```
 ng serve
 ```
-
+This project is uploaded on github pages, You can access this project via this link [E-Commerce](https://agamy5280.github.io/E-commerce-Website/)
 # Sign in
 
 To unlock this application maximum features please sign in using provided username and password which is created by [dummyjson.com](https://dummyjson.com/users) API
