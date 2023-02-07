@@ -33,4 +33,11 @@ export class NavBarComponent implements OnInit {
       window.location.reload();
     });
   }
+  goToCategoriesProducts(category){
+    this._router.navigate(['shop'], {
+      queryParams: {
+        category: category,
+      },
+    });
+  }
 }

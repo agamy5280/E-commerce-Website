@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="text-center py-4">
-            <a class="h6 text-decoration-none text-truncate" href="">{{ prod['title'] }}</a>
+            <a class="h6 text-decoration-none text-truncate" (click)="redirectToProductPage(prod['id'])">{{ prod['title'] }}</a>
             <div class="d-flex align-items-center justify-content-center mt-2">
               <h5>{{ prod['price'] - (prod['price'] * prod['discountPercentage']/100) | currency }}</h5>
               <h6 class="text-muted ml-2"><del>{{ prod['price'] | currency}}</del></h6>
