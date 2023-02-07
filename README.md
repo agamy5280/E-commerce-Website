@@ -1,7 +1,7 @@
 # ECommerce: Simple Front-End application
 This is a simple E-Commerce Front-End project using Angular, bootstrap. The application loads products, categories from external API and displays them. Users have the ability to click or search any product/category of products to get more information about the selected product details. Inaddition, Users can add, Delete to/from the cart and wishlist using Local Storage as this application is only front-end based and the external API does not have the feature of adding, deleting, updating the cart, users, products; also user can sign in or mock register request.
 # Project Intent
-The aim of this project is to test my ability to convert templetes of HTML, CSS codes using the correct created components and with the help of external API to produce a dynamic single application project using Angular; However, the main goal is learning how to write clean code, maintain website, design architecture, how to organize components and services and finally to be more knowledgeable about Angular.
+The aim of this project is to test my ability to convert templetes of HTML, CSS codes using the correct created components and with the help of external API to produce a dynamic single page application project using Angular; However, the main goal is learning how to write clean code, maintain website, design architecture, how to organize components and services and finally to be more knowledgeable about Angular.
 # Features
 | Feature | Implemented? | Description
 | :--- | :---: | :---: |
